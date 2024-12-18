@@ -164,17 +164,144 @@ nav .social-icons .icon:hover {
     font-family: 'Varela Round', sans-serif;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
 .songInfo img {
     opacity: 0;
     transition: opacity 0.4s ease-in;
 }
 
-@media only screen and (max-width: 1100px) {
-    body {
-        background: linear-gradient(135deg, #1E1E2E, #6C5CE7, #74B9FF);
+::-webkit-scrollbar {
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .brand img {
+        height: 30px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 20px;
+        font-size: 0.9rem;
+    }
+
+    .songItem img {
+        width: 35px;
+        margin: 0 10px;
+    }
+
+    #myProgressBar {
+        width: 90vw;
+    }
+
+    .songInfo {
+        font-size: 0.9rem;
+        left: 5vw;
+    }
+
+    .bottom {
+        height: 100px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .brand {
+        font-size: 1.1rem;
+    }
+
+    .social-icons .icon {
+        font-size: 1.2em;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 95%;
+        padding: 15px;
+    }
+
+    .songItem {
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .songItem img {
+        width: 30px;
+        margin: 0 8px;
+    }
+
+    #myProgressBar {
+        width: 95vw;
+    }
+
+    .bottom {
+        flex-direction: column;
+        padding: 10px;
+        height: auto;
+    }
+
+    .icons i {
+        font-size: 1.5rem;
+    }
+
+    .songInfo {
+        font-size: 0.8rem;
+        position: static;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    nav ul {
+        padding: 5px;
+        font-size: 0.8rem;
+    }
+
+    .brand {
+        font-size: 1rem;
+    }
+
+    .brand img {
+        height: 25px;
+    }
+
+    .container {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .songItem {
+        font-size: 0.8rem;
+        height: 35px;
+    }
+
+    .songItem img {
+        width: 25px;
+    }
+
+    .icons i {
+        font-size: 1.3rem;
+    }
+
+    #myProgressBar {
+        width: 100%;
+    }
+
+    .bottom {
+        padding: 5px;
+    }
+
+    .songInfo {
+        font-size: 0.7rem;
     }
 }
