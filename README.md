@@ -2,9 +2,6 @@
 
 Welcome to **Aurora Music**, a custom-built music player inspired by real-time JavaScript development practices. Created to explore dynamic front-end functionality, this app offers a seamless experience for playing and managing your favorite tunes.
 
-![Aurora Music Screenshot](image.png)
-
----
 
 ## 🚀 Features
 
