@@ -142,6 +142,7 @@ nav .social-icons .icon:hover {
     justify-content: space-between;
     align-items: center;
     border-radius: 34px;
+    background: linear-gradient(135deg, #1ABC9C, #9B59B6);
 }
 
 .songItem img {
