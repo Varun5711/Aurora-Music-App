@@ -1,4 +1,3 @@
-console.log("Welcome");
 //Defining Everything (one by one) 
 let songIndex = 0;
 let audioElement = new Audio('Songs/1.mp3');
@@ -9,7 +8,8 @@ let songItems = document.querySelectorAll(".songItem")
 let Items = document.querySelectorAll(".songItemPlay");
 let previous = document.getElementById("previous");
 let next = document.getElementById("next");
-let masterSongName = document.getElementById("masterSongName")
+let masterSongName = document.getElementById("masterSongName");
+let data = document.getElementById("container");
 
 let songs = [
     { songName: "Hikari", filePath: "Songs/1.mp3", coverPath: "Covers/cover2.jpg" },
@@ -40,7 +40,7 @@ masterPlay.addEventListener("click", () => {
     }
 });
 
-//for the input (range) to act dyynamically
+//To Update the time and implimenting the changes
 
 audioElement.addEventListener("timeupdate", () => {
     progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
@@ -51,10 +51,14 @@ myProgressBar.addEventListener("change", () => {
     audioElement.currentTime = (myProgressBar.value * audioElement.duration) / 100
 });
 
+//To Track items for each and every song from the given 10 songs
+
 songItems.forEach((el, i) => {
     el.getElementsByTagName("img")[0] == songs[i].coverPath;
     el.getElementsByClassName("songName")[0] == songs[i].songName;
 });
+
+//A function which is used in many ways to remove and add the icons dynamically
 
 const makeAllPlays = () => {
     Items.forEach((element) => {
@@ -62,6 +66,8 @@ const makeAllPlays = () => {
         element.classList.add("fa-play-circle");
     });
 }
+
+//To make a playbar for playing  (pausing through the masterPlayBar) 
 
 Items.forEach((el) => {
     el.addEventListener("click", (e) => {
@@ -79,6 +85,8 @@ Items.forEach((el) => {
     });
 });
 
+//Dynamically implimenting the backward and forward button
+
 Backward = () => {
     previous.addEventListener("click", () => {
         if (songIndex <= 0) {
@@ -93,7 +101,13 @@ Backward = () => {
         masterPlay.classList.remove("fa-play-circle");
         masterPlay.classList.add("fa-pause-circle");
         gif.style.opacity = 1;
-        
+        if(Items[songIndex].classList.contains("fa-play-circle")) {
+            if(songIndex >= 0) {
+                Items[songIndex].classList.add("fa-pause-circle");
+                Items[songIndex+1].classList.add("fa-play-circle");
+                Items[songIndex+1].classList.remove("fa-pause-circle");
+            }
+        }
     });
 }
 Backward();
@@ -112,29 +126,71 @@ Forward = () => {
         masterPlay.classList.remove("fa-play-circle");
         masterPlay.classList.add("fa-pause-circle");
         gif.style.opacity = 1;
+        Items[songIndex].classList.remove("fa-play-circle");
+        Items[songIndex].classList.add("fa-pause-circle");
+        if (Items[songIndex].classList.contains("fa-pause-circle")) {
+            if (songIndex <= 9) {
+                Items[songIndex - 1].classList.add("fa-play-circle");
+                Items[songIndex - 1].classList.remove("fa-pause-circle");
+            }
+        }
     });
 }
 
 Forward();
 
-if (masterPlay) {
-    document.addEventListener("keypress", (e) => {
-        if (e.key === " " || e.key === "Spacebar") {
-            masterPlay.click();
-            e.preventDefault();
-        }
-    });
-}
+//Physically implimenting the playbar
 
-const updateMasterPlayButton = (isPlaying) => {
-    if (isPlaying) {
-        masterPlay.classList.remove("fa-play-circle");
-        masterPlay.classList.add("fa-pause-circle");
-    } else {
-        masterPlay.classList.remove("fa-pause-circle");
-        masterPlay.classList.add("fa-play-circle");
+const interactiveKeys = () => {
+    if (masterPlay) {
+        document.addEventListener("keypress", (e) => {
+            if (e.key === " " || e.key === "Spacebar") {
+                masterPlay.click();
+                e.preventDefault();
+            }
+        });
+    }
+
+    if (next) {
+        document.addEventListener("keypress", (e) => {
+            if (e.shiftKey && e.code === "F11") {
+                next.click();
+            }
+        });
+    }
+
+    if (previous) {
+        document.addEventListener("keypress", (e) => {
+            if (e.shiftKey && e.code === "F9") {
+                previous.click();
+            }
+        });
     }
 };
 
+interactiveKeys();
 
+//Updating the playpause in the songList (play-pause icons)
 
+masterPlay.addEventListener("click", () => {
+    makeAllPlays();
+    if (masterPlay.classList.contains("fa-pause-circle")) {
+        Items[songIndex].classList.remove("fa-play-circle");
+        Items[songIndex].classList.add("fa-pause-circle");
+    }
+});
+
+//Continuing the song after one ends
+
+audioElement.addEventListener("ended", () => {
+    if (audioElement.ended) {
+        songIndex = (songIndex + 1) % songs.length;
+        audioElement.src = `Songs/${songIndex + 1}.mp3`;
+        audioElement.currentTime = 0;
+        audioElement.play();
+        masterSongName.innerText = songs[songIndex].songName;
+        makeAllPlays();
+        Items[songIndex].classList.remove("fa-play-circle");
+        Items[songIndex].classList.add("fa-pause-circle");
+    }
+});
