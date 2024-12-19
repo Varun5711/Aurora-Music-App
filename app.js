@@ -10,16 +10,16 @@ let next = document.getElementById("next");
 let masterSongName = document.getElementById("masterSongName")
 
 let songs = [
-    { songName: "Hikari", filePath: "Songs/1.p3", coverPath: "Covers/cover2.jpg" },
-    { songName: "Automotivo Liberado 1.0 (Super Slowed)", filePath: "Songs/2.p3", coverPath: "Covers/cover2.jpg" },
-    { songName: "Funk Estrelas", filePath: "Songs/3.p3", coverPath: "Covers/cover3.jpg" },
-    { songName: "Number One - Bankai", filePath: "Songs/4.p3", coverPath: "Covers/cover4.jpg" },
-    { songName: "Softcore", filePath: "Songs/5.p3", coverPath: "Covers/cover5.jpg" },
-    { songName: "Funk Universo (Slowed)", filePath: "Songs/6.p3", coverPath: "Covers/cover6.jpg" },
-    { songName: "Sleepwalker (Slowed)", filePath: "Songs/7.p3", coverPath: "Covers/cover7.jpg" },
-    { songName: "Kompa - Rarin", filePath: "Songs/8.p3", coverPath: "Covers/cover8.jpg" },
-    { songName: "Beautiful", filePath: "Songs/9.p3", coverPath: "Covers/cover9.jpg" },
-    { songName: "New Page", filePath: "Songs/10.p3", coverPath: "Covers/cover10.jpg" }
+    { songName: "Hikari", filePath: "Songs/1.mp3", coverPath: "Covers/cover2.jpg" },
+    { songName: "Automotivo Liberado 1.0 (Super Slowed)", filePath: "Songs/2.mp3", coverPath: "Covers/cover2.jpg" },
+    { songName: "Funk Estrelas", filePath: "Songs/3.mp3", coverPath: "Covers/cover3.jpg" },
+    { songName: "Number One - Bankai", filePath: "Songs/4.mp3", coverPath: "Covers/cover4.jpg" },
+    { songName: "Softcore", filePath: "Songs/5.mp3", coverPath: "Covers/cover5.jpg" },
+    { songName: "Funk Universo (Slowed)", filePath: "Songs/6.mp3", coverPath: "Covers/cover6.jpg" },
+    { songName: "Sleepwalker (Slowed)", filePath: "Songs/7.mp3", coverPath: "Covers/cover7.jpg" },
+    { songName: "Kompa - Rarin", filePath: "Songs/8.mp3", coverPath: "Covers/cover8.jpg" },
+    { songName: "Beautiful", filePath: "Songs/9.mp3", coverPath: "Covers/cover9.jpg" },
+    { songName: "New Page", filePath: "Songs/10.mp3", coverPath: "Covers/cover10.jpg" }
 ];
 
 masterPlay.addEventListener("click", () => {
@@ -32,7 +32,7 @@ masterPlay.addEventListener("click", () => {
         audioElement.pause();
         masterPlay.classList.remove("fa-pause-circle");
         masterPlay.classList.add("fa-play-circle");
-        gif.style.opacity = 0
+        gif.style.opacity = 0;
     }
 });
 
